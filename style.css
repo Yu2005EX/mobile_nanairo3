@@ -1,0 +1,127 @@
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 横はみ出し完全防止 */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 全体 */
+body.home {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+
+  font-family: "legitima", serif;
+  font-weight: 600;
+  font-style: normal;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* タイトル */
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.15em;
+}
+
+.subtitle {
+  margin-bottom: 3em;
+  opacity: 0.8;
+}
+
+/* =====================
+   ボタン配置（常に横4つ）
+===================== */
+.buttons {
+  display: flex;
+  flex-direction: row;     /* ← 常に横 */
+  flex-wrap: nowrap;       /* ← 折り返さない */
+  justify-content: center;
+  gap: 2vw;                /* ← 画面幅に応じて間隔も縮む */
+  width: 100%;
+  padding: 0 2vw;          /* ← 端の安全マージン */
+}
+
+/* 円ボタン */
+.image-btn {
+  flex: 0 0 auto;
+
+  /* ★ここが核心 */
+  width: calc((100vw - 2vw * 2 - 2vw * 3) / 4);
+  /* ↑ 画面幅 − 左右余白 − gap×3 ÷ 4 */
+
+  max-width: 140px;        /* PCでは大きくなりすぎない */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 6px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+/* 七色リング */
+.image-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    red, orange, yellow, green, cyan, blue, violet
+  );
+  z-index: 0;
+}
+
+/* 中の画像 */
+.image-btn img {
+  position: relative;
+  z-index: 1;
+
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border-radius: 50%;
+  object-fit: cover;
+  background: #000;
+}
+
+/* タップ・ホバー */
+.image-btn:hover {
+  transform: scale(1.05);
+}
+
+.image-btn:active {
+  transform: scale(0.95);
+}
+
+/* =====================
+   小型スマホ微調整
+===================== */
+@media (max-width: 360px) {
+
+  h1 {
+    font-size: 2.2em;
+  }
+
+  .subtitle {
+    margin-bottom: 2em;
+  }
+
+  .image-btn {
+    padding: 5px;
+  }
+}
+
+
