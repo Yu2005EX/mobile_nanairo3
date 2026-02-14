@@ -29,3 +29,13 @@ canvas {
   width: auto;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  body {
+    -webkit-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none; /* 長押しメニュー禁止 */
+    -webkit-tap-highlight-color: transparent; /* タップ時の青いハイライト消す */
+  }
+}
